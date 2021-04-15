@@ -1,0 +1,49 @@
+{% extends "base_page.html" %}
+
+{% block title %} Корзина {% endblock title%}
+
+{% block content %}
+
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="nav navbar-left">
+            {% include 'app_product/greetings.html' %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item"> <a href="{% url 'account' %}" class="nav-link header-text">Личный кабинет</a></li>
+            <li class="nav-item "> <a href="{% url 'product_list' %}" class="nav-link header-text">Список товаров</a></li>
+            <li class="nav-item"> <a href="{% url 'most_sold_products' %}" class="nav-link header-text">Наиболее продаваемые товары</a></li>
+        </ul>
+        <div class="nav navbar-right">
+            {% include 'app_product/cart_info.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+<h1>Список товаров в корзине</h1>
+{% if product_list %}
+
+<ul class="list-group">
+    {% for product in product_list %}
+        <li class="list-group-item">Товар: {{product.product.name}}, Магазин: {{ product.store.name }}, Цена: {{ product.price }},
+            Количество: {{ product.quantity}}</li>
+    {% endfor %}
+</ul>
+<h2> Итого: {{ cart.quantity }} товаров, на сумму <span class="price">{{ cart.price }}</span></h2>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Купить товары</button>
+</form>
+    <br>
+    {% if message %}
+    <p>{{ message }} <a href="{% url 'add_balance' %}">Пополнение баланса</a></p>
+    {% endif %}
+{% else %} <h2>В корзине нет товаров</h2>
+{% endif %}
+</div>
+
+
+{% endblock content%}

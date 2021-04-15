@@ -1,0 +1,30 @@
+body{
+    background-color: #f1f1f1;
+}
+li{
+    list-style-type: none;
+}
+
+.header-text{
+    color: rgb(236, 233, 203);
+}
+
+.nav-link:hover{
+    color: blue;
+}
+
+#nav{
+    background-color: rgb(221, 55, 221);
+}
+
+.navbar-inverse ul > .active a{
+    background-color: rgb(184, 28, 223);
+}
+
+.navbar-inverse{
+    margin-bottom: 40px;
+}
+
+.errorlist li{
+    color: red;
+}

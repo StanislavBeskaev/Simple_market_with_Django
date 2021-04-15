@@ -1,0 +1,7 @@
+{% if request.user.is_authenticated %}
+{% if cart %}
+
+<a href="{% url 'cart' %}">Корзина </a> <span class="header-text">:  {{ cart.quantity }} шт, стоимость: {{ cart.price }}</span>
+{% else %} <span class="header-text">Корзина пуста</span>
+{% endif %}
+{% endif %}

@@ -1,0 +1,44 @@
+{% extends "base_page.html" %}
+
+{% block title %} Добавление товара в корзину {% endblock title%}
+
+{% block content %}
+
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="nav navbar-left">
+            {% include 'app_product/greetings.html' %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item"> <a href="{% url 'account' %}" class="nav-link header-text">Личный кабинет</a></li>
+            <li class="nav-item "> <a href="{% url 'product_list' %}" class="nav-link header-text">Список товаров</a></li>
+            <li class="nav-item"> <a href="{% url 'most_sold_products' %}" class="nav-link header-text">Наиболее продаваемые товары</a></li>
+        </ul>
+        <div class="nav navbar-right">
+            {% include 'app_product/cart_info.html' %}
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+<h1>Добавление товара в корзину</h1>
+<li class="list-group-item col-lg-4">Товар: {{warehouse.product.name}}</li>
+<li class="list-group-item col-lg-4">Магазин: {{ warehouse.store.name }}</li>
+<li class="list-group-item col-lg-4">Цена: {{ warehouse.price }}</li>
+<li class="list-group-item col-lg-4">Остаток на складе магазина: {{ warehouse.quantity}}</li>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+</form>
+    <br>
+<p>{{ message }} </p>
+
+</div>
+
+
+
+{% endblock content%}

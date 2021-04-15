@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+
+{% block title %} Страница пополнения баланса {% endblock title%}
+
+{% block content %}
+
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="nav navbar-left">
+            {% include 'app_product/greetings.html' %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item"> <a href="{% url 'account' %}" class="nav-link header-text">Личный кабинет</a></li>
+            <li class="nav-item "> <a href="{% url 'product_list' %}" class="nav-link header-text">Список товаров</a></li>
+            <li class="nav-item"> <a href="{% url 'most_sold_products' %}" class="nav-link header-text">Наиболее продаваемые товары</a></li>
+        </ul>
+        <div class="nav navbar-right">
+            {% include 'app_product/cart_info.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Пополнение баланса</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Пополнить баланс</button>
+</form>
+
+</div>
+
+
+
+
+{% endblock content%}

@@ -1,0 +1,11 @@
+{% if request.user.is_authenticated %}
+<ul class="navbar-nav">
+    <li class="header-text">{{ request.user.username }}, баланс {{ request.user.profile.balance }}</li>
+    <li><a href="{% url 'logout' %}">Выйти</a></li>
+</ul>
+{% else %}
+<ul class="navbar-nav">
+    <li class="header-text">Вы зашли как неавторизованный пользователь</li>
+    <li><a href="{% url 'login' %}">Авторизоваться</a></li>
+</ul>
+{% endif %}

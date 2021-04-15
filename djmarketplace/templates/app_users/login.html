@@ -1,0 +1,17 @@
+{% extends "base_page.html" %}
+
+{% block title %} Страница авторизации {% endblock title%}
+
+{% block content %}
+<div class="container">
+<h2>Введите ваши учётные данные</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Авторизиваться</button>
+</form>
+<br>
+<h3>Нет учётной записи?</h3>
+<a href="{% url 'register' %}">Зарегистрироваться</a>
+</div>
+{% endblock content%}

@@ -1,0 +1,60 @@
+{% extends "base_page.html" %}
+
+{% block title %} Наиболее продаваемые товары {% endblock title%}
+
+{% block content %}
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="nav navbar-left">
+            {% include 'app_product/greetings.html' %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item"> <a href="{% url 'account' %}" class="nav-link header-text">Личный кабинет</a></li>
+            <li class="nav-item"> <a href="{% url 'product_list' %}" class="nav-link header-text">Список товаров</a></li>
+            <li class="nav-item active"> <a href="{% url 'most_sold_products' %}" class="nav-link header-text">Наиболее продаваемые товары</a></li>
+        </ul>
+        <div class="nav navbar-right">
+            {% include 'app_product/cart_info.html' %}
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1>Отчёт по наиболее продаваемым товарам</h1>
+<p>Показывает топ {{ count }} наиболее продаваемых товаров</p>
+<p>Укажите дату и время начала и конца периода в фильтрах для поиска наиболее продаваемых товаров за этот период</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Найти</button>
+</form>
+<br>
+{% if report %}
+    {% if products%}
+    <h2>{{ count }} наиболее продаваемых товаров</h2>
+    <table class="table">
+      <thead class="thead-primary">
+        <tr>
+          <th>Id товара</th>
+          <th>Название товара</th>
+          <th>Продано штук за период</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for product in products %}
+        <tr>
+          <th scope="row">{{ product.product }}</th>
+          <td>{{ product.product_name }}</td>
+          <td>{{ product.sum_quantity }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %} За выбранный период не было покупок
+
+    {% endif %}
+    {% endif %}
+</div>
+
+
+{% endblock content %}
+

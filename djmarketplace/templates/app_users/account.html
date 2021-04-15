@@ -1,0 +1,63 @@
+{% extends "base_page.html" %}
+
+{% block title %} Личный кабинет {% endblock title%}
+
+{% block content %}
+<div id="nav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="nav navbar-left">
+            {% include 'app_product/greetings.html' %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item active"> <a href="{% url 'account' %}" class="nav-link header-text">Личный кабинет</a></li>
+            <li class="nav-item"> <a href="{% url 'product_list' %}" class="nav-link header-text">Список товаров</a></li>
+            <li class="nav-item"> <a href="{% url 'most_sold_products' %}" class="nav-link header-text">Наиболее продаваемые товары</a></li>
+        </ul>
+        <div class="nav navbar-right">
+            {% include 'app_product/cart_info.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<a href="{% url 'add_balance' %}" class="page-link">Пополнить баланс</a><br>
+
+<h1>Информация о пользователе</h1>
+
+<ul class="list-group row">
+    <li class="list-group-item col-lg-4">Имя пользователя: {{ request.user.username }}</li>
+    <li class="list-group-item col-lg-4">Баланс: {{ request.user.profile.balance }}</li>
+    <li class="list-group-item col-lg-4">Статус: {{ request.user.profile.status }}</li>
+    <li class="list-group-item col-lg-4">Сумма покупок: {{ request.user.profile.purchases_amount }}</li>
+</ul>
+<br>
+<h2>История покупок</h2>
+{% if purchase_history %}
+<table class="table table-striped">
+  <thead>
+    <tr class="table-primary">
+      <th>Дата</th>
+      <th>Товар</th>
+      <th>Магазин</th>
+      <th>Цена</th>
+      <th>Количество</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for purchase in purchase_history %}
+    <tr>
+      <td>{{ purchase.date }}</td>
+      <td>{{ purchase.product.name }}</td>
+      <td>{{ purchase.store.name }}</td>
+      <td>{{ purchase.price }}</td>
+      <td>{{ purchase.quantity }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+    </table>
+{% else %} <h3>Покупок не было</h3>
+{% endif %}
+</div>
+
+
+{% endblock content%}
