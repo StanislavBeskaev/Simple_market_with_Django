@@ -1,0 +1,18 @@
+{% extends "base_page.html" %}
+
+{% block title %} Главная страница {% endblock title %}
+
+{% block content %}
+
+<h1>Страницы:</h1>
+<ul>
+    <li><a href="{% url 'about' %}">О нас</a></li>
+    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+    <li><a href="{% url 'news_list' %}">Список новостей</a></li>
+    <li><a href="{% url 'housing_list' %}">Список продаваемого жилья</a></li>
+    <li><a href="{% url 'news_rss' %}" >Лента новостей RSS</a></li>
+    <li><a href="sitemap.xml">Карта сайта</a></li>
+
+</ul>
+
+{% endblock content %}

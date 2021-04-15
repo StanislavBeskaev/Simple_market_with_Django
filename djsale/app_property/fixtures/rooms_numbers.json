@@ -1,0 +1,65 @@
+[
+{
+    "model": "app_property.roomsnumber",
+    "pk": 1,
+    "fields": {
+        "name": "одна комната"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 2,
+    "fields": {
+        "name": "две комнаты"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 3,
+    "fields": {
+        "name": "три комнаты"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 4,
+    "fields": {
+        "name": "четыре комнаты"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 5,
+    "fields": {
+        "name": "пять комнат"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 6,
+    "fields": {
+        "name": "тринадцать комнат"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 7,
+    "fields": {
+        "name": "семнадцать комнат"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 8,
+    "fields": {
+        "name": "слишком много комнат"
+    }
+},
+{
+    "model": "app_property.roomsnumber",
+    "pk": 9,
+    "fields": {
+        "name": "лююююдииииии......"
+    }
+}
+]

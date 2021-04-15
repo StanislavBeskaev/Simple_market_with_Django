@@ -1,0 +1,21 @@
+{% extends "base_page.html" %}
+
+{% block title %} Список продаваемого жилья {% endblock title %}
+
+{% block content %}
+{% include 'to_main.html' %}
+<h1>Список продаваемого жилья</h1>
+{% if housing_list %}
+    <ul>
+        {% for housing in housing_list %}
+        <li>
+            <h3><a href="{% url 'housing_detail' housing.id %}">{{ housing.description }} {{ housing.cost }}р </a> </h3>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+<h2>Жилья нет</h2>
+{% endif %}
+
+{% endblock content %}

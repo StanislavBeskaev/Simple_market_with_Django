@@ -1,0 +1,21 @@
+{% extends "base_page.html" %}
+
+{% block title %} Список новостей {% endblock title %}
+
+{% block content %}
+{% include 'to_main.html' %}
+<h1>Список новостей</h1>
+{% if news_list %}
+    <ul>
+        {% for news in news_list %}
+        <li>
+            <h3><a href="{% url 'news_detail' news.id %}">{{ news.title }} </a> </h3>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+<h2>Новостей нет</h2>
+{% endif %}
+
+{% endblock content %}
